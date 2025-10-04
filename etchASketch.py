@@ -10,7 +10,7 @@ def setup():
 
 setup()
 # Create a turtle screen for Tracy's world
-speed(0)
+speed(10000)
 
 # Outer Square
 penup()
