@@ -55,12 +55,16 @@ def launcher_main():
                 turtle.reset()
         screen.update()
 
-    def run_etch(s):
-        """Run the etch-a-sketch program."""
+    def run_module(s, module_name):
+        """Run a module with screen management.
+        
+        Args:
+            s: The screen object
+            module_name: Full import path of the module (e.g. 'etch_a_sketch.etchASketch')
+        """
         clear_drawing_area()
         
         # Remove any existing import so we can reload fresh
-        module_name = 'etch_a_sketch.etchASketch'
         if module_name in sys.modules:
             del sys.modules[module_name]
         
@@ -68,7 +72,7 @@ def launcher_main():
         screen.tracer(1)
             
         # Set screen before importing so module uses our screen
-        import etch_a_sketch.etchASketch as sketch_module
+        module = __import__(module_name, fromlist=[''])
         sys.modules[module_name].LAUNCHER_SCREEN = screen
         
         # Clean up and restore UI state
@@ -84,18 +88,19 @@ def launcher_main():
     def draw_buttons():
         drawer.clear()
         drawer.penup()
-        make_button(drawer, start_x, y, btn_w, btn_h, "EtchASketch", run_etch)
+        make_button(drawer, start_x, y, btn_w, btn_h, "EtchASketch", 
+                   lambda s: run_module(s, 'etch_a_sketch.etchASketch'))
         make_button(drawer, start_x + btn_w + spacing, y, btn_w, btn_h, 
-                   "Placeholder", lambda s: None)
+                   "With Color", lambda s: run_module(s, 'etch_a_sketch.with_color'))
         make_button(drawer, start_x + 2*(btn_w + spacing), y, btn_w, btn_h,
-                   "Placeholder", lambda s: None)
+                   "Mural", lambda s: run_module(s, 'mural.mural'))
         screen.update()
 
     # Simple click handler: translate clicks to which button and call callback
     buttons = [
-        (start_x, y, btn_w, btn_h, run_etch),
-        (start_x + (btn_w + spacing), y, btn_w, btn_h, lambda s: None),
-        (start_x + 2*(btn_w + spacing), y, btn_w, btn_h, lambda s: None),
+        (start_x, y, btn_w, btn_h, lambda s: run_module(s, 'etch_a_sketch.etchASketch')),
+        (start_x + (btn_w + spacing), y, btn_w, btn_h, lambda s: run_module(s, 'etch_a_sketch.with_color')),
+        (start_x + 2*(btn_w + spacing), y, btn_w, btn_h, lambda s: run_module(s, 'mural.mural')),
     ]
 
     def on_click(x, y):
