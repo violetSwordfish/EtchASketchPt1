@@ -1,6 +1,6 @@
-# EtchASketchPt1
+# Tracy's World Work Showcase
 
-A Python Turtle Graphics project featuring an Etch A Sketch-like drawing and a launcher interface for running multiple turtle examples. The main drawing script is `etchASketch.py` and uses the built-in `turtle` module.
+A Python Turtle Graphics project featuring drawings from Tracy World application and a launcher interface for running multiple projects.
 
 ## Features
 
