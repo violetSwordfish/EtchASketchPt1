@@ -36,7 +36,7 @@ def launcher_main():
     screen.tracer(0)  # Turn off animation for setup
 
     # Create button drawer turtle
-    drawer = Turtle(visible=False)
+    drawer = Turtle(visible=True)
     drawer.hideturtle()
     drawer.speed(0)
 
@@ -53,7 +53,6 @@ def launcher_main():
         for turtle in screen.turtles():
             if turtle != drawer:
                 turtle.reset()
-                turtle.hideturtle()
         screen.update()
 
     def run_etch(s):
