@@ -1,15 +1,9 @@
 from turtle import *
+import random
+from screen_setup import setup
 
-def setup():
-    screen = Screen()
-    # Expose all turtle and screen functions
-    for name in dir(screen):
-        attr = getattr(screen, name)
-        if callable(attr):
-            globals()[name] = attr
-
-setup()
-# Create a turtle screen for Tracy's world
+# Expose turtle/screen functions into this module's globals
+setup(globals())
 speed(10000)
 
 # Outer Square

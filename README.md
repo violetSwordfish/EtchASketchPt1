@@ -26,10 +26,5 @@ On macOS, the Turtle graphics window will open and display the drawing. The scri
 ## Notes and suggestions
 
 - This script was created specifically for "Tracy's world" and draws the frame and controls intended for that environment.
-- The script directly imports all callable attributes from the Turtle `Screen` into the global namespace via `setup()`; this is unconventional but works for small scripts.
 - If you want to modify the drawing, edit `etchASketch.py` with your preferred coordinates and drawing commands.
 - If running inside an environment without a display (headless server), Turtle will not open a window; run locally on a machine with GUI support.
-
-## License
-
-This repository doesn't include a license file. Add one if you plan to share or publish the code.
