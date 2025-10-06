@@ -29,4 +29,5 @@ for i in range(36):
     bead_draw()
     left(10)
 
-#for bead braclet
+#for bead braclet assignment
+
