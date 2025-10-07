@@ -69,7 +69,7 @@ def launcher_main():
             del sys.modules[module_name]
         
         # Temporarily enable animation for the drawing
-        screen.tracer(1)
+        screen.tracer(0)
             
         # Set screen before importing so module uses our screen
         module = __import__(module_name, fromlist=[''])
